@@ -13,6 +13,18 @@ export default function Navbar() {
               EthioTravel
             </span>
           </Link>
+          <div className="flex items-center space-x-4">
+            <Link href={"/trips"} className="text-slate-900 hover:text-sky-500">
+              My Trips
+            </Link>
+            <Link href={"/globe"} className="text-slate-900 hover:text-sky-500">
+              Globe
+            </Link>
+
+            <button>
+              Sign In
+            </button>
+          </div>
         </div>
       </nav>
     </>
