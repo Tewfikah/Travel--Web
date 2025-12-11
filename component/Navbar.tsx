@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image"; // 17.7K (gzipped: 6.4K)
 import Link from "next/link"; // 40.5K (gzipped: 11.9K)
 
@@ -24,7 +26,7 @@ export default function Navbar() {
             <div className="flex items-center space-x-3">
               <button className="px-4 flex py-2 items-center justify-center bg-gray-800 hover:bg-gray-900 text-white rounded-sm p-2 font-medium">
                 Sign In
-             <img className="h-6 w-6"  src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/24/external-github-community-for-software-building-and-testing-online-logo-color-tal-revivo.png" alt="external-github-community-for-software-building-and-testing-online-logo-color-tal-revivo"/>
+             <img className="h-6 w-6"  src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/24/external-github-community-for-software-building-and-testing-online-logo-color-tal-revivo.png" alt="external-github-community-for-software-building-and-testing-online-logo-color-tal-revivo" onClick={login}/>
 
               </button>
              
