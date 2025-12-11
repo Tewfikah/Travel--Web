@@ -1,73 +1,20 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import Image from "next/image"; // 17.7K (gzipped: 6.4K)
+import Link from "next/link"; // 40.5K (gzipped: 11.9K)
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <nav
-      className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[var(--surface)] shadow-lg border-b border-[var(--border)]"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        
-        {/* Logo */}
-        <Link href="/" className="text-2xl font-heading font-semibold text-[var(--text)]">
-          EthioTravel
-        </Link>
-
-        {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-10 text-[var(--text)] font-medium">
-          <Link href="/">Home</Link>
-          <Link href="/destinations">Destinations</Link>
-          <Link href="/packages">Packages</Link>
-          <Link href="/blog">Blog</Link>
-          <Link href="/contact">Contact</Link>
-        </div>
-
-        {/* Desktop Right Section */}
-        <div className="hidden md:flex items-center space-x-4">
-          <button className="btn">Explore</button>
-        </div>
-
-        {/* Mobile Toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-[var(--text)]"
-        >
-          {isOpen ? <X size={26} /> : <Menu size={26} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-[var(--surface)] border-t border-[var(--border)] p-5 space-y-4 text-[var(--text)]">
-          <Link href="/" className="block">Home</Link>
-          <Link href="/destinations" className="block">
-            Destinations
+    <>
+      <nav className="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-sm shadow-md border-b border-gray-200">
+        <div className="container mx-auto flex justify-between items-center px-6 lg:px-8 h-16">
+          <Link href={"/"} className="flex items-center">
+            <Image src={"/logo.jpeg"} alt={"logo"} width={50} height={50} />
+            <span className="text-2xl font-bold text-gray-800">
+              {/* " " */}
+              EthioTravel
+            </span>
           </Link>
-          <Link href="/packages" className="block">Packages</Link>
-          <Link href="/blog" className="block">Blog</Link>
-          <Link href="/contact" className="block">Contact</Link>
-
-          <button className="btn w-full mt-4">Explore</button>
         </div>
-      )}
-    </nav>
+      </nav>
+    </>
   );
 }
